@@ -5,21 +5,7 @@ const exchangeRouter = new Router({
   prefix: '/api/exchangeRate'
 })
 
-// 获取汇率列表
-exchangeRouter.get('/getquotation/list', async(ctx, next) => {
-  let params = {
-    market: 'foreign',
-    finClientType: 'pc',
-  };
-
-  let data = await request.get('https://finance.pae.baidu.com/api/getbanner', {params})
-
-  console.log(data)
-  ctx.response.body = data.Result;
-
-})
-
-// 根据code获取汇率信息
+// ! 根据code获取汇率信息  不需要验证信息
 exchangeRouter.get("/getquotation", async (ctx, next) => {
 
   let query = ctx.request.query;
